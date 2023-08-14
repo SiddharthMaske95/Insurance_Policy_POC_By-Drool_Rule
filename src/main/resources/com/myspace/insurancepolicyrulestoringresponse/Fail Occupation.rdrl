@@ -1,0 +1,13 @@
+package com.myspace.insurancepolicyrulestoringresponse;
+
+import java.lang.Number;
+
+rule "Fail Occupation"
+	dialect "mvel"
+	when
+		$Q : Insurance( occupation excludes ( occupationinput ) )
+	then
+		modify( $Q ) {
+				setStatusOccupation( "Fail" )
+		}
+end

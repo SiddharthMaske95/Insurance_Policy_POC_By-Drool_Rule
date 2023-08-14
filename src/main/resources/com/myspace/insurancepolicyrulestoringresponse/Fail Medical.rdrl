@@ -1,0 +1,13 @@
+package com.myspace.insurancepolicyrulestoringresponse;
+
+import java.lang.Number;
+
+rule "Fail Medical"
+	dialect "mvel"
+	when
+		$Q : Insurance( medical_history excludes ( medicleinput ) )
+	then
+		modify( $Q ) {
+				setStatusMedical_History( "Fail" )
+		}
+end

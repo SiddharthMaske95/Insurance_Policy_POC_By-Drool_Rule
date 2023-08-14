@@ -1,0 +1,14 @@
+package com.myspace.insurancepolicyrulestoringresponse;
+
+import java.lang.Number;
+
+rule "FailFinalStatus"
+	dialect "mvel"
+	salience 1
+	when
+		$I : Insurance( statusAge == "Fail" || statusAnnualIncome == "Fail" || statusMedical_History == "Fail" || statusOccupation == "Fail" || statusPremiumAmount == "Fail" )
+	then
+		modify( $I ) {
+				setStatusFinal( "Fail" )
+		}
+end

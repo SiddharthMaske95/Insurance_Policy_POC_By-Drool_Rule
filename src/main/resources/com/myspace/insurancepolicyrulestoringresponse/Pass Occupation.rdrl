@@ -1,0 +1,13 @@
+package com.myspace.insurancepolicyrulestoringresponse;
+
+import java.lang.Number;
+
+rule "Pass Occupation"
+	dialect "mvel"
+	when
+		$Q : Insurance( occupation contains ( occupationinput ) )
+	then
+		modify( $Q ) {
+				setStatusOccupation( "Pass" )
+		}
+end

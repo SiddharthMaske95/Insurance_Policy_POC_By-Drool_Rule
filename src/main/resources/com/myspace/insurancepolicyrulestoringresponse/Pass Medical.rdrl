@@ -1,0 +1,13 @@
+package com.myspace.insurancepolicyrulestoringresponse;
+
+import java.lang.Number;
+
+rule "Pass Medical"
+	dialect "mvel"
+	when
+		$Q : Insurance( medical_history contains ( medicleinput ) )
+	then
+		modify( $Q ) {
+				setStatusMedical_History( "Pass" )
+		}
+end
